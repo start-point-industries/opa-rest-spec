@@ -1,0 +1,3346 @@
+swagger: '2.0'
+info:
+  version: '12.2.5'
+  title: Interview Service
+  contact:
+    name: Start Point Industries
+    url: https://www.startpointindustries.com
+host: proxy.startpointindustries.com
+basePath: /interview/12.2.5/{deployment}
+tags:
+  - name: Resources
+    description: ' '
+paths:
+  '/start':
+      post:
+        tags:
+          - Resources
+        summary: Start interview
+        consumes:
+          - application/json
+        produces:
+          - application/json
+        parameters:
+          - name: deployment
+            in: path
+            description: deployment
+            required: true
+            type: string
+          - in: body
+            name: requestBody
+            description: requestBody
+            required: true
+            schema:
+              $ref: '#/definitions/LoadData'
+        responses:
+          '200':
+            description: OK
+            schema:
+              $ref: '#/definitions/StartInterviewResponse'
+          '201':
+            description: Created
+          '401':
+            description: Unauthorized
+          '403':
+            description: Forbidden
+          '404':
+            description: Not Found
+  '/investigate':
+      post:
+        tags:
+          - Resources
+        summary: Investigate
+        consumes:
+          - application/json
+        produces:
+          - application/json
+        parameters:
+          - name: deployment
+            in: path
+            description: deployment
+            required: true
+            type: string
+          - in: body
+            name: requestBody
+            description: requestBody
+            required: true
+            schema:
+              $ref: '#/definitions/InvestigateRequest'
+        responses:
+          '200':
+            description: OK
+            schema:
+              $ref: '#/definitions/InvestigateResponse'
+          '201':
+            description: Created
+          '401':
+            description: Unauthorized
+          '403':
+            description: Forbidden
+          '404':
+            description: Not Found
+  '/end':
+    post:
+      tags:
+        - Resources
+      summary: End interview
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+        - in: body
+          name: requestBody
+          description: requestBody
+          required: true
+          schema:
+            $ref: '#/definitions/EndInterviewRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EndInterviewResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/files':
+    get:
+      tags:
+        - Resources
+      summary: Get files
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetFilesResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - Resources
+      summary: Get files
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+        - in: body
+          name: requestBody
+          description: requestBody
+          required: true
+          schema:
+            $ref: '#/definitions/GetFilesRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetFilesResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/get-session-data':
+    get:
+      tags:
+        - Resources
+      summary: Get session data
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetSessionDataResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - Resources
+      summary: Get session data
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetSessionDataResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/input-data-definition':
+    get:
+      tags:
+        - Resources
+      summary: Get input data definition
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetSeedDataDefinitionResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - Resources
+      summary: Get input data definition
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+        - in: body
+          name: requestBody
+          description: requestBody
+          required: true
+          schema:
+            $ref: '#/definitions/GetSeedDataDefinitionRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetSeedDataDefinitionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/restore-snapshot':
+    post:
+      tags:
+        - Resources
+      summary: Restore snapshot
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+        - in: body
+          name: requestBody
+          description: requestBody
+          required: true
+          schema:
+            $ref: '#/definitions/RestoreSessionRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/RestoreSessionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/set-session-data':
+    post:
+      tags:
+        - Resources
+      summary: Set session data
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+        - in: body
+          name: requestBody
+          description: requestBody
+          required: true
+          schema:
+            $ref: '#/definitions/SetSessionDataRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SetSessionDataResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/snapshot-session':
+    post:
+      tags:
+        - Resources
+      summary: Snapshot session
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+        - in: body
+          name: requestBody
+          description: requestBody
+          required: true
+          schema:
+            $ref: '#/definitions/SnapshotSessionRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SnapshotSessionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  Attachment:
+    type: object
+    properties:
+      description:
+        type: string
+      filename:
+        type: string
+      name:
+        type: string
+      value:
+        type: string
+    title: Attachment
+  AttachmentControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      existingFiles:
+        $ref: '#/definitions/SessionAttachmentList'
+      filesToUpload:
+        $ref: '#/definitions/NewAttachmentList'
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: AttachmentControl
+  AttachmentList:
+    type: object
+    properties:
+      attachment:
+        type: array
+        items:
+          $ref: '#/definitions/Attachment'
+    title: AttachmentList
+  AttributeAuditNode:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      booleanVal:
+        type: boolean
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/ChangePoint'
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      endRelevance:
+        type: string
+      entityId:
+        type: string
+      instanceId:
+        type: string
+      isUserSet:
+        type: boolean
+      nodeId:
+        type: string
+      nodes:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/AttributeAuditNode'
+            - $ref: '#/definitions/RelationshipAuditNode'
+            - $ref: '#/definitions/ReferenceAuditNode'
+      numberVal:
+        type: number
+      referenceTags:
+        $ref: '#/definitions/ReferenceTagList'
+      startRelevance:
+        type: string
+      text:
+        type: string
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue'
+    title: AttributeAuditNode
+  AttributeExplanationNode:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      booleanVal:
+        type: boolean
+      caption:
+        type: string
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/ChangePoint2'
+      contextEntityId:
+        type: string
+      contextInstanceId:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      id:
+        type: string
+      isBaseLevel:
+        type: boolean
+      isUserSet:
+        type: boolean
+      nodes:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/AttributeExplanationNode'
+            - $ref: '#/definitions/RelationshipExplanationNode'
+            - $ref: '#/definitions/ReferenceExplanationNode'
+      numberVal:
+        type: number
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      ruleTags:
+        $ref: '#/definitions/RuleTagList'
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+      width:
+        type: integer
+    title: AttributeExplanationNode
+  AttributeType:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/ChangePoint2'
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      id:
+        type: string
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      type:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: AttributeType
+  AuditReportList:
+    type: object
+    properties:
+      report:
+        type: array
+        items:
+          $ref: '#/definitions/AttributeAuditNode'
+    title: AuditReportList
+  BinaryData:
+    type: object
+    properties:
+      mimeType:
+        type: string
+      value:
+        type: string
+    title: BinaryData
+  BooleanChangePoint:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      date:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: BooleanChangePoint
+  BooleanControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      caption:
+        type: string
+      checkedImage:
+        $ref: '#/definitions/BinaryData'
+      checkedImageUrl:
+        type: string
+      controlOrientation:
+        type: string
+        enum:
+          - HORIZONTAL
+          - VERTICAL
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      currentValue:
+        $ref: '#/definitions/BooleanControlValue'
+      customRenderURL:
+        type: string
+      defaultValue:
+        $ref: '#/definitions/BooleanControlValue'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      hideCaption:
+        type: boolean
+      hintText:
+        type: string
+      id:
+        type: string
+      inputControlType:
+        type: string
+        enum:
+          - CHECKBOX
+          - RADIO_BUTTON
+          - DROP_DOWN
+          - LISTBOX
+          - SEARCHING_COMBO
+          - DMY_INPUTS
+          - CALENDAR
+          - TEXT_AREA
+          - TEXT
+          - MASKED
+          - PASSWORD
+          - HMS_INPUTS
+          - DMYHMS_INPUTS
+          - IMAGE_BUTTON
+          - TEXT_BUTTON_GROUP
+          - IMAGE_BUTTON_GROUP
+          - TEXT_IMAGE_BUTTON_GROUP
+          - SLIDER
+          - SWITCH
+          - CUSTOM
+      listOptions:
+        $ref: '#/definitions/BooleanListOptions'
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      sliderLeftCaption:
+        type: string
+      sliderRightCaption:
+        type: string
+      uncheckedImage:
+        $ref: '#/definitions/BinaryData'
+      uncheckedImageUrl:
+        type: string
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: BooleanControl
+  BooleanControlValue:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/BooleanChangePoint'
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: BooleanControlValue
+  BooleanListOptions:
+    type: object
+    properties:
+      listOption:
+        type: array
+        items:
+          $ref: '#/definitions/BooleanOption'
+    title: BooleanListOptions
+  BooleanOption:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/BooleanChangePoint'
+      checkedImage:
+        $ref: '#/definitions/BinaryData'
+      checkedImageUrl:
+        type: string
+      displayText:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      uncheckedImage:
+        $ref: '#/definitions/BinaryData'
+      uncheckedImageUrl:
+        type: string
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: BooleanOption
+  BooleanValueExpression:
+    type: object
+    properties:
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      controlId:
+        type: string
+      entityId:
+        type: string
+      expressionOperator:
+        type: string
+        enum:
+          - EQUALS
+          - NOT_EQUALS
+          - IN
+          - NOT_IN
+      expressionType:
+        type: string
+        enum:
+          - IF
+          - UNLESS
+      instanceId:
+        type: string
+      values:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/UncertainValue2'
+            - $ref: '#/definitions/UnknownValue2'
+            - boolean
+    title: BooleanValueExpression
+  CaptchaControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      width:
+        type: integer
+    title: CaptchaControl
+  ChangePoint:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      date:
+        type: string
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue'
+    title: ChangePoint
+  ChangePoint2:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      date:
+        type: string
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: ChangePoint2
+  ConstantExpression:
+    type: object
+    properties:
+      result:
+        type: boolean
+    title: ConstantExpression
+  ContainerControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      controls:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/TextControl'
+            - $ref: '#/definitions/DateControl'
+            - $ref: '#/definitions/DateTimeControl'
+            - $ref: '#/definitions/CurrencyControl'
+            - $ref: '#/definitions/BooleanControl'
+            - $ref: '#/definitions/NumberControl'
+            - $ref: '#/definitions/TimeOfDayControl'
+            - $ref: '#/definitions/LabelControl'
+            - $ref: '#/definitions/ExplanationControl'
+            - $ref: '#/definitions/ImageControl'
+            - $ref: '#/definitions/CaptchaControl'
+            - $ref: '#/definitions/ReferenceRelationshipControl'
+            - $ref: '#/definitions/EntityGroupControl'
+            - $ref: '#/definitions/AttachmentControl'
+            - $ref: '#/definitions/SignatureControl'
+            - $ref: '#/definitions/FormControl'
+            - $ref: '#/definitions/ContainerControl'
+            - $ref: '#/definitions/ContainmentRelationshipControl'
+      customRenderURL:
+        type: string
+      displayStyle:
+        type: string
+        enum:
+          - HORIZONTAL
+          - VERTICAL
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      width:
+        type: integer
+    title: ContainerControl
+  ContainmentRelationshipControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      addInstanceCaption:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      displayStyle:
+        type: string
+        enum:
+          - PORTRAIT
+          - TABULAR
+      entityInstanceControl:
+        type: array
+        items:
+          $ref: '#/definitions/EntityInstanceControl'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      relationshipId:
+        type: string
+      relationshipType:
+        type: string
+        enum:
+          - ONE_TO_ONE
+          - ONE_TO_MANY
+          - MANY_TO_ONE
+          - MANY_TO_MANY
+      removeInstanceCaption:
+        type: string
+      showAddRemoveControls:
+        type: boolean
+      sourceEntityId:
+        type: string
+      sourceInstanceId:
+        type: string
+      targetEntityId:
+        type: string
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: ContainmentRelationshipControl
+  ControlBase:
+    type: object
+    properties:
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      width:
+        type: integer
+    title: ControlBase
+  ControlStateExpression:
+    type: object
+    properties:
+      booleanExpression:
+        $ref: '#/definitions/BooleanValueExpression'
+      constantExpression:
+        $ref: '#/definitions/ConstantExpression'
+      numberExpression:
+        $ref: '#/definitions/NumberValueExpression'
+      textExpression:
+        $ref: '#/definitions/TextValueExpression'
+    title: ControlStateExpression
+  ControlStateRule:
+    type: object
+    properties:
+      defaultState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      hide:
+        $ref: '#/definitions/ControlStateExpression'
+      optional:
+        $ref: '#/definitions/ControlStateExpression'
+      readOnly:
+        $ref: '#/definitions/ControlStateExpression'
+    title: ControlStateRule
+  CurrencyControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      caption:
+        type: string
+      controlOrientation:
+        type: string
+        enum:
+          - HORIZONTAL
+          - VERTICAL
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      currentValue:
+        $ref: '#/definitions/NumberControlValue'
+      customRenderURL:
+        type: string
+      defaultValue:
+        $ref: '#/definitions/NumberControlValue'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      hintText:
+        type: string
+      id:
+        type: string
+      inputControlType:
+        type: string
+        enum:
+          - CHECKBOX
+          - RADIO_BUTTON
+          - DROP_DOWN
+          - LISTBOX
+          - SEARCHING_COMBO
+          - DMY_INPUTS
+          - CALENDAR
+          - TEXT_AREA
+          - TEXT
+          - MASKED
+          - PASSWORD
+          - HMS_INPUTS
+          - DMYHMS_INPUTS
+          - IMAGE_BUTTON
+          - TEXT_BUTTON_GROUP
+          - IMAGE_BUTTON_GROUP
+          - TEXT_IMAGE_BUTTON_GROUP
+          - SLIDER
+          - SWITCH
+          - CUSTOM
+      integerInputOnly:
+        type: boolean
+      listOptions:
+        $ref: '#/definitions/NumberListOptions'
+      listOptionsFilter:
+        $ref: '#/definitions/NumberListOptionsFilter'
+      maxValue:
+        type: number
+      minValue:
+        type: number
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      sliderLeftCaption:
+        type: string
+      sliderRightCaption:
+        type: string
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: CurrencyControl
+  DataField:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/ChangePoint'
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      fieldType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      name:
+        type: string
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue'
+    title: DataField
+  DataLink:
+    type: object
+    properties:
+      name:
+        type: string
+      ref:
+        type: array
+        items:
+          $ref: '#/definitions/LinkRef'
+      target:
+        type: string
+    title: DataLink
+  DataTable:
+    type: object
+    title: DataTable
+  DateChangePoint:
+    type: object
+    properties:
+      date:
+        type: string
+      dateVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: DateChangePoint
+  DateControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      caption:
+        type: string
+      controlOrientation:
+        type: string
+        enum:
+          - HORIZONTAL
+          - VERTICAL
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      currentValue:
+        $ref: '#/definitions/DateControlValue'
+      customRenderURL:
+        type: string
+      dayHintText:
+        type: string
+      defaultValue:
+        $ref: '#/definitions/DateControlValue'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      hintText:
+        type: string
+      id:
+        type: string
+      inputControlType:
+        type: string
+        enum:
+          - CHECKBOX
+          - RADIO_BUTTON
+          - DROP_DOWN
+          - LISTBOX
+          - SEARCHING_COMBO
+          - DMY_INPUTS
+          - CALENDAR
+          - TEXT_AREA
+          - TEXT
+          - MASKED
+          - PASSWORD
+          - HMS_INPUTS
+          - DMYHMS_INPUTS
+          - IMAGE_BUTTON
+          - TEXT_BUTTON_GROUP
+          - IMAGE_BUTTON_GROUP
+          - TEXT_IMAGE_BUTTON_GROUP
+          - SLIDER
+          - SWITCH
+          - CUSTOM
+      listOptions:
+        $ref: '#/definitions/DateListOptions'
+      listOptionsFilter:
+        $ref: '#/definitions/DateListOptionsFilter'
+      maxValue:
+        type: string
+      minValue:
+        type: string
+      monthHintText:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      sliderLeftCaption:
+        type: string
+      sliderRightCaption:
+        type: string
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+      yearEnd:
+        type: integer
+      yearHintText:
+        type: string
+      yearStart:
+        type: integer
+    title: DateControl
+  DateControlValue:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/DateChangePoint'
+      dateVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: DateControlValue
+  DateListOptionFilterValue:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      listOptions:
+        $ref: '#/definitions/DateListOptions'
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+    title: DateListOptionFilterValue
+  DateListOptions:
+    type: object
+    properties:
+      listOption:
+        type: array
+        items:
+          $ref: '#/definitions/DateOption'
+    title: DateListOptions
+  DateListOptionsFilter:
+    type: object
+    properties:
+      parentControlId:
+        type: string
+      parentControlValue:
+        type: array
+        items:
+          $ref: '#/definitions/DateListOptionFilterValue'
+    title: DateListOptionsFilter
+  DateOption:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/DateChangePoint'
+      checkedImage:
+        $ref: '#/definitions/BinaryData'
+      checkedImageUrl:
+        type: string
+      dateVal:
+        type: string
+      displayText:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      uncheckedImage:
+        $ref: '#/definitions/BinaryData'
+      uncheckedImageUrl:
+        type: string
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: DateOption
+  DateTimeChangePoint:
+    type: object
+    properties:
+      date:
+        type: string
+      datetimeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: DateTimeChangePoint
+  DateTimeControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      caption:
+        type: string
+      controlOrientation:
+        type: string
+        enum:
+          - HORIZONTAL
+          - VERTICAL
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      currentValue:
+        $ref: '#/definitions/DateTimeControlValue'
+      customRenderURL:
+        type: string
+      dayHintText:
+        type: string
+      defaultValue:
+        $ref: '#/definitions/DateTimeControlValue'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      hintText:
+        type: string
+      hourHintText:
+        type: string
+      id:
+        type: string
+      inputControlType:
+        type: string
+        enum:
+          - CHECKBOX
+          - RADIO_BUTTON
+          - DROP_DOWN
+          - LISTBOX
+          - SEARCHING_COMBO
+          - DMY_INPUTS
+          - CALENDAR
+          - TEXT_AREA
+          - TEXT
+          - MASKED
+          - PASSWORD
+          - HMS_INPUTS
+          - DMYHMS_INPUTS
+          - IMAGE_BUTTON
+          - TEXT_BUTTON_GROUP
+          - IMAGE_BUTTON_GROUP
+          - TEXT_IMAGE_BUTTON_GROUP
+          - SLIDER
+          - SWITCH
+          - CUSTOM
+      listOptions:
+        $ref: '#/definitions/DateTimeListOptions'
+      listOptionsFilter:
+        $ref: '#/definitions/DateTimeListOptionsFilter'
+      maxValue:
+        type: string
+      meridiemHintText:
+        type: string
+      minValue:
+        type: string
+      minuteHintText:
+        type: string
+      minuteIncrement:
+        type: integer
+      monthHintText:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      secondHintText:
+        type: string
+      secondIncrement:
+        type: integer
+      sliderLeftCaption:
+        type: string
+      sliderRightCaption:
+        type: string
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+      yearEnd:
+        type: integer
+      yearHintText:
+        type: string
+      yearStart:
+        type: integer
+    title: DateTimeControl
+  DateTimeControlValue:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/DateTimeChangePoint'
+      datetimeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: DateTimeControlValue
+  DateTimeListOptionFilterValue:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      listOptions:
+        $ref: '#/definitions/DateTimeListOptions'
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+    title: DateTimeListOptionFilterValue
+  DateTimeListOptions:
+    type: object
+    properties:
+      listOption:
+        type: array
+        items:
+          $ref: '#/definitions/DateTimeOption'
+    title: DateTimeListOptions
+  DateTimeListOptionsFilter:
+    type: object
+    properties:
+      parentControlId:
+        type: string
+      parentControlValue:
+        type: array
+        items:
+          $ref: '#/definitions/DateTimeListOptionFilterValue'
+    title: DateTimeListOptionsFilter
+  DateTimeOption:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/DateTimeChangePoint'
+      checkedImage:
+        $ref: '#/definitions/BinaryData'
+      checkedImageUrl:
+        type: string
+      datetimeVal:
+        type: string
+      displayText:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      uncheckedImage:
+        $ref: '#/definitions/BinaryData'
+      uncheckedImageUrl:
+        type: string
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: DateTimeOption
+  EndInterviewRequest:
+    type: object
+    title: EndInterviewRequest
+  EndInterviewResponse:
+    type: object
+    title: EndInterviewResponse
+  EntityAuditNode:
+    type: object
+    properties:
+      objectType:
+        type: string
+      instanceId:
+        type: string
+      text:
+        type: string
+    title: EntityAuditNode
+  EntityExplanationNode:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      id:
+        type: string
+      instanceId:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      width:
+        type: integer
+    title: EntityExplanationNode
+  EntityGroupControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      displayStyle:
+        type: string
+        enum:
+          - PORTRAIT
+          - TABULAR
+      entityId:
+        type: string
+      entityInstanceControl:
+        type: array
+        items:
+          $ref: '#/definitions/EntityInstanceControl'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: EntityGroupControl
+  EntityInstanceControl:
+    type: object
+    properties:
+      caption:
+        type: string
+      contextEntityId:
+        type: string
+      contextInstanceId:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      controls:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/TextControl'
+            - $ref: '#/definitions/DateControl'
+            - $ref: '#/definitions/DateTimeControl'
+            - $ref: '#/definitions/CurrencyControl'
+            - $ref: '#/definitions/BooleanControl'
+            - $ref: '#/definitions/NumberControl'
+            - $ref: '#/definitions/TimeOfDayControl'
+            - $ref: '#/definitions/LabelControl'
+            - $ref: '#/definitions/ExplanationControl'
+            - $ref: '#/definitions/ImageControl'
+            - $ref: '#/definitions/CaptchaControl'
+            - $ref: '#/definitions/ReferenceRelationshipControl'
+            - $ref: '#/definitions/EntityGroupControl'
+            - $ref: '#/definitions/AttachmentControl'
+            - $ref: '#/definitions/SignatureControl'
+            - $ref: '#/definitions/FormControl'
+            - $ref: '#/definitions/ContainerControl'
+            - $ref: '#/definitions/ContainmentRelationshipControl'
+      customRenderURL:
+        type: string
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: EntityInstanceControl
+  EntityInstanceType:
+    type: object
+    properties:
+      attribute:
+        type: array
+        items:
+          $ref: '#/definitions/AttributeType'
+      entity:
+        type: array
+        items:
+          $ref: '#/definitions/EntityType'
+      id:
+        type: string
+      relationship:
+        type: array
+        items:
+          $ref: '#/definitions/RelationshipType'
+    title: EntityInstanceType
+  EntityType:
+    type: object
+    properties:
+      id:
+        type: string
+      instance:
+        type: array
+        items:
+          $ref: '#/definitions/EntityInstanceType'
+    title: EntityType
+  ExplanationControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      booleanVal:
+        type: boolean
+      caption:
+        type: string
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/ChangePoint2'
+      contextEntityId:
+        type: string
+      contextInstanceId:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      id:
+        type: string
+      nodes:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/AttributeExplanationNode'
+            - $ref: '#/definitions/RelationshipExplanationNode'
+      numberVal:
+        type: number
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+      width:
+        type: integer
+    title: ExplanationControl
+  Field:
+    type: object
+    properties:
+      fieldType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      name:
+        type: string
+    title: Field
+  File:
+    type: object
+    properties:
+      objectType:
+        type: string
+      fileName:
+        type: string
+      id:
+        type: string
+      value:
+        type: string
+    title: File
+  FormControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      formId:
+        type: string
+      formType:
+        type: string
+        enum:
+          - EXCEL
+          - HTML
+          - PDF
+          - RTF
+          - XML
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      width:
+        type: integer
+    title: FormControl
+  GetFilesRequest:
+    type: object
+    properties:
+      files:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/RequestedAttachment'
+            - $ref: '#/definitions/RequestedForm'
+    title: GetFilesRequest
+  GetFilesResponse:
+    type: object
+    properties:
+      attachmentOrForm:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/File'
+    title: GetFilesResponse
+  GetSeedDataDefinitionRequest:
+    type: object
+    properties:
+      showVersion:
+        type: boolean
+    title: GetSeedDataDefinitionRequest
+  GetSeedDataDefinitionResponse:
+    type: object
+    properties:
+      seedData:
+        $ref: '#/definitions/SeedDataDefinition'
+      versionInfo:
+        $ref: '#/definitions/VersionInfoType'
+    title: GetSeedDataDefinitionResponse
+  GetSessionDataResponse:
+    type: object
+    properties:
+      globalInstance:
+        $ref: '#/definitions/GlobalInstanceType'
+    title: GetSessionDataResponse
+  GlobalInstanceType:
+    type: object
+    properties:
+      attribute:
+        type: array
+        items:
+          $ref: '#/definitions/AttributeType'
+      entity:
+        type: array
+        items:
+          $ref: '#/definitions/EntityType'
+      relationship:
+        type: array
+        items:
+          $ref: '#/definitions/RelationshipType'
+    title: GlobalInstanceType
+  ImageControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      height:
+        type: integer
+      horizontalAlign:
+        type: string
+        enum:
+          - LEFT
+          - CENTER
+          - RIGHT
+      id:
+        type: string
+      image:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      url:
+        type: string
+      width:
+        type: integer
+    title: ImageControl
+  InterviewProgress:
+    type: object
+    properties:
+      freeNavigation:
+        type: boolean
+      progressStage:
+        type: array
+        items:
+          $ref: '#/definitions/ProgressStage'
+    title: InterviewProgress
+  InterviewScreen:
+    type: object
+    properties:
+      backButtonText:
+        type: string
+      checkpointAfterSubmit:
+        type: boolean
+      contextEntityId:
+        type: string
+      contextInstanceId:
+        type: string
+      controls:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/TextControl'
+            - $ref: '#/definitions/DateControl'
+            - $ref: '#/definitions/DateTimeControl'
+            - $ref: '#/definitions/CurrencyControl'
+            - $ref: '#/definitions/BooleanControl'
+            - $ref: '#/definitions/NumberControl'
+            - $ref: '#/definitions/TimeOfDayControl'
+            - $ref: '#/definitions/LabelControl'
+            - $ref: '#/definitions/ExplanationControl'
+            - $ref: '#/definitions/ImageControl'
+            - $ref: '#/definitions/CaptchaControl'
+            - $ref: '#/definitions/ReferenceRelationshipControl'
+            - $ref: '#/definitions/EntityGroupControl'
+            - $ref: '#/definitions/AttachmentControl'
+            - $ref: '#/definitions/SignatureControl'
+            - $ref: '#/definitions/FormControl'
+            - $ref: '#/definitions/ContainerControl'
+            - $ref: '#/definitions/ContainmentRelationshipControl'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      id:
+        type: string
+      isAutomatic:
+        type: boolean
+      previousGoalState:
+        type: string
+      progress:
+        $ref: '#/definitions/InterviewProgress'
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      screenAction:
+        type: string
+        enum:
+          - SUBMIT
+          - NEXT
+          - STOP
+      submitButtonText:
+        type: string
+      title:
+        type: string
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+    title: InterviewScreen
+  InvestigateRequest:
+    type: object
+    properties:
+      goalState:
+        type: string
+      screen:
+        $ref: '#/definitions/InterviewScreen'
+      updateData:
+        $ref: '#/definitions/UpdateData'
+    title: InvestigateRequest
+  InvestigateResponse:
+    type: object
+    properties:
+      goalState:
+        type: string
+      screen:
+        $ref: '#/definitions/InterviewScreen'
+      submitData:
+        $ref: '#/definitions/SubmitInfo'
+    title: InvestigateResponse
+  JAXBElement«File»:
+    type: object
+    properties:
+      globalScope:
+        type: boolean
+      name:
+        type: string
+      nil:
+        type: boolean
+      typeSubstituted:
+        type: boolean
+      value:
+        $ref: '#/definitions/File'
+    title: JAXBElement«File»
+  JAXBElement«object»:
+    type: object
+    properties:
+      globalScope:
+        type: boolean
+      name:
+        type: string
+      nil:
+        type: boolean
+      typeSubstituted:
+        type: boolean
+      value:
+        type: object
+    title: JAXBElement«object»
+  LabelControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      style:
+        type: string
+      width:
+        type: integer
+    title: LabelControl
+  Link:
+    type: object
+    properties:
+      name:
+        type: string
+      target:
+        type: string
+    title: Link
+  LinkRef:
+    type: object
+    properties:
+      id:
+        type: string
+    title: LinkRef
+  LoadData:
+    type: object
+    properties:
+      table:
+        type: array
+        items:
+          $ref: '#/definitions/DataTable'
+    title: LoadData
+  NewAttachment:
+    type: object
+    properties:
+      fileName:
+        type: string
+      value:
+        type: string
+    title: NewAttachment
+  NewAttachmentList:
+    type: object
+    properties:
+      file:
+        type: array
+        items:
+          $ref: '#/definitions/NewAttachment'
+    title: NewAttachmentList
+  NumberChangePoint:
+    type: object
+    properties:
+      date:
+        type: string
+      numberVal:
+        type: number
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: NumberChangePoint
+  NumberControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      caption:
+        type: string
+      controlOrientation:
+        type: string
+        enum:
+          - HORIZONTAL
+          - VERTICAL
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      currentValue:
+        $ref: '#/definitions/NumberControlValue'
+      customRenderURL:
+        type: string
+      defaultValue:
+        $ref: '#/definitions/NumberControlValue'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      hintText:
+        type: string
+      id:
+        type: string
+      inputControlType:
+        type: string
+        enum:
+          - CHECKBOX
+          - RADIO_BUTTON
+          - DROP_DOWN
+          - LISTBOX
+          - SEARCHING_COMBO
+          - DMY_INPUTS
+          - CALENDAR
+          - TEXT_AREA
+          - TEXT
+          - MASKED
+          - PASSWORD
+          - HMS_INPUTS
+          - DMYHMS_INPUTS
+          - IMAGE_BUTTON
+          - TEXT_BUTTON_GROUP
+          - IMAGE_BUTTON_GROUP
+          - TEXT_IMAGE_BUTTON_GROUP
+          - SLIDER
+          - SWITCH
+          - CUSTOM
+      integerInputOnly:
+        type: boolean
+      listOptions:
+        $ref: '#/definitions/NumberListOptions'
+      listOptionsFilter:
+        $ref: '#/definitions/NumberListOptionsFilter'
+      maxValue:
+        type: number
+      minValue:
+        type: number
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      sliderLeftCaption:
+        type: string
+      sliderRightCaption:
+        type: string
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: NumberControl
+  NumberControlValue:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/NumberChangePoint'
+      numberVal:
+        type: number
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: NumberControlValue
+  NumberListOptionFilterValue:
+    type: object
+    properties:
+      listOptions:
+        $ref: '#/definitions/NumberListOptions'
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+    title: NumberListOptionFilterValue
+  NumberListOptions:
+    type: object
+    properties:
+      listOption:
+        type: array
+        items:
+          $ref: '#/definitions/NumberOption'
+    title: NumberListOptions
+  NumberListOptionsFilter:
+    type: object
+    properties:
+      parentControlId:
+        type: string
+      parentControlValue:
+        type: array
+        items:
+          $ref: '#/definitions/NumberListOptionFilterValue'
+    title: NumberListOptionsFilter
+  NumberOption:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/NumberChangePoint'
+      checkedImage:
+        $ref: '#/definitions/BinaryData'
+      checkedImageUrl:
+        type: string
+      displayText:
+        type: string
+      numberVal:
+        type: number
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      uncheckedImage:
+        $ref: '#/definitions/BinaryData'
+      uncheckedImageUrl:
+        type: string
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: NumberOption
+  NumberValueExpression:
+    type: object
+    properties:
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      controlId:
+        type: string
+      entityId:
+        type: string
+      expressionOperator:
+        type: string
+        enum:
+          - EQUALS
+          - NOT_EQUALS
+          - IN
+          - NOT_IN
+      expressionType:
+        type: string
+        enum:
+          - IF
+          - UNLESS
+      instanceId:
+        type: string
+      values:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/UncertainValue2'
+            - $ref: '#/definitions/UnknownValue2'
+            - number
+    title: NumberValueExpression
+  ProgressScreen:
+    type: object
+    properties:
+      allRelevantDataCollected:
+        type: boolean
+      goalState:
+        type: string
+      id:
+        type: string
+      isCurrent:
+        type: boolean
+      title:
+        type: string
+      visited:
+        type: boolean
+      willShow:
+        type: boolean
+    title: ProgressScreen
+  ProgressStage:
+    type: object
+    properties:
+      isCurrent:
+        type: boolean
+      progressScreen:
+        type: array
+        items:
+          $ref: '#/definitions/ProgressScreen'
+      title:
+        type: string
+    title: ProgressStage
+  PropertiesList:
+    type: object
+    properties:
+      property:
+        type: array
+        items:
+          $ref: '#/definitions/PropertiesListItem'
+    title: PropertiesList
+  PropertiesListItem:
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+    title: PropertiesListItem
+  QName:
+    type: object
+    properties:
+      localPart:
+        type: string
+      namespaceURI:
+        type: string
+      prefix:
+        type: string
+    title: QName
+  ReferenceAuditNode:
+    type: object
+    properties:
+      objectType:
+        type: string
+      refNodeId:
+        type: string
+    title: ReferenceAuditNode
+  ReferenceExplanationNode:
+    type: object
+    properties:
+      objectType:
+        type: string
+      id:
+        type: string
+    title: ReferenceExplanationNode
+  ReferenceRelationshipControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      controlType:
+        type: string
+        enum:
+          - CHECKBOX
+          - RADIO_BUTTON
+          - DROP_DOWN
+          - LISTBOX
+          - SEARCHING_COMBO
+          - DMY_INPUTS
+          - CALENDAR
+          - TEXT_AREA
+          - TEXT
+          - MASKED
+          - PASSWORD
+          - HMS_INPUTS
+          - DMYHMS_INPUTS
+          - IMAGE_BUTTON
+          - TEXT_BUTTON_GROUP
+          - IMAGE_BUTTON_GROUP
+          - TEXT_IMAGE_BUTTON_GROUP
+          - SLIDER
+          - SWITCH
+          - CUSTOM
+      customRenderURL:
+        type: string
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      relationshipId:
+        type: string
+      relationshipType:
+        type: string
+        enum:
+          - ONE_TO_ONE
+          - ONE_TO_MANY
+          - MANY_TO_ONE
+          - MANY_TO_MANY
+      rest:
+        type: array
+        items:
+          $ref: '#/definitions/JAXBElement«object»'
+      sourceEntityId:
+        type: string
+      sourceInstanceId:
+        type: string
+      targetEntityId:
+        type: string
+      width:
+        type: integer
+    title: ReferenceRelationshipControl
+  ReferenceTag:
+    type: object
+    properties:
+      value:
+        type: string
+    title: ReferenceTag
+  ReferenceTagList:
+    type: object
+    properties:
+      referenceTag:
+        type: array
+        items:
+          $ref: '#/definitions/ReferenceTag'
+    title: ReferenceTagList
+  RelationshipAuditNode:
+    type: object
+    properties:
+      objectType:
+        type: string
+      endRelevance:
+        type: string
+      isUserSet:
+        type: boolean
+      nodeId:
+        type: string
+      nodes:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/EntityAuditNode'
+            - $ref: '#/definitions/AttributeAuditNode'
+            - $ref: '#/definitions/RelationshipAuditNode'
+            - $ref: '#/definitions/ReferenceAuditNode'
+      referenceTags:
+        $ref: '#/definitions/ReferenceTagList'
+      relationshipId:
+        type: string
+      relationshipState:
+        type: string
+        enum:
+          - KNOWN
+          - UNKNOWN
+          - UNCERTAIN
+      relationshipType:
+        type: string
+        enum:
+          - ONE_TO_ONE
+          - ONE_TO_MANY
+          - MANY_TO_ONE
+          - MANY_TO_MANY
+      sourceEntityId:
+        type: string
+      sourceInstanceId:
+        type: string
+      startRelevance:
+        type: string
+      targetEntityId:
+        type: string
+      text:
+        type: string
+    title: RelationshipAuditNode
+  RelationshipExplanationNode:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      id:
+        type: string
+      isBaseLevel:
+        type: boolean
+      isUserSet:
+        type: boolean
+      nodes:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/EntityExplanationNode'
+            - $ref: '#/definitions/AttributeExplanationNode'
+            - $ref: '#/definitions/RelationshipExplanationNode'
+            - $ref: '#/definitions/ReferenceExplanationNode'
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      relationshipId:
+        type: string
+      relationshipState:
+        type: string
+        enum:
+          - KNOWN
+          - UNKNOWN
+          - UNCERTAIN
+      relationshipType:
+        type: string
+        enum:
+          - ONE_TO_ONE
+          - ONE_TO_MANY
+          - MANY_TO_ONE
+          - MANY_TO_MANY
+      ruleTags:
+        $ref: '#/definitions/RuleTagList'
+      sourceEntityId:
+        type: string
+      sourceInstanceId:
+        type: string
+      targetEntityId:
+        type: string
+      width:
+        type: integer
+    title: RelationshipExplanationNode
+  RelationshipTargetType:
+    type: object
+    properties:
+      instanceId:
+        type: string
+    title: RelationshipTargetType
+  RelationshipType:
+    type: object
+    properties:
+      id:
+        type: string
+      state:
+        type: string
+        enum:
+          - KNOWN
+          - UNKNOWN
+          - UNCERTAIN
+      target:
+        type: array
+        items:
+          $ref: '#/definitions/RelationshipTargetType'
+    title: RelationshipType
+  RequestedAttachment:
+    type: object
+    properties:
+      objectType:
+        type: string
+      id:
+        type: string
+    title: RequestedAttachment
+  RequestedForm:
+    type: object
+    properties:
+      objectType:
+        type: string
+      formType:
+        type: string
+        enum:
+          - EXCEL
+          - HTML
+          - PDF
+          - RTF
+          - XML
+      id:
+        type: string
+    title: RequestedForm
+  RestoreSessionRequest:
+    type: object
+    properties:
+      showVersion:
+        type: boolean
+      snapshot:
+        type: string
+    title: RestoreSessionRequest
+  RestoreSessionResponse:
+    type: object
+    properties:
+      goalState:
+        type: string
+      screen:
+        $ref: '#/definitions/InterviewScreen'
+      versionInfo:
+        $ref: '#/definitions/VersionInfoType'
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+    title: RestoreSessionResponse
+  RuleTag:
+    type: object
+    properties:
+      value:
+        type: string
+    title: RuleTag
+  RuleTagList:
+    type: object
+    properties:
+      ruleTag:
+        type: array
+        items:
+          $ref: '#/definitions/RuleTag'
+    title: RuleTagList
+  SeedDataDefinition:
+    type: object
+    properties:
+      rootTable:
+        type: string
+      table:
+        type: array
+        items:
+          $ref: '#/definitions/Table'
+    title: SeedDataDefinition
+  SessionAttachment:
+    type: object
+    properties:
+      attachmentId:
+        type: string
+      fileName:
+        type: string
+    title: SessionAttachment
+  SessionAttachmentList:
+    type: object
+    properties:
+      file:
+        type: array
+        items:
+          $ref: '#/definitions/SessionAttachment'
+    title: SessionAttachmentList
+  SetSessionDataRequest:
+    type: object
+    properties:
+      globalInstance:
+        $ref: '#/definitions/GlobalInstanceType'
+    title: SetSessionDataRequest
+  SetSessionDataResponse:
+    type: object
+    properties:
+      warnings:
+        $ref: '#/definitions/TransactionWarningList'
+    title: SetSessionDataResponse
+  SignatureControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      caption:
+        type: string
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      customRenderURL:
+        type: string
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      existingFile:
+        $ref: '#/definitions/SessionAttachment'
+      fileToUpload:
+        $ref: '#/definitions/NewAttachment'
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: SignatureControl
+  SnapshotSessionRequest:
+    type: object
+    properties:
+      goalState:
+        type: string
+    title: SnapshotSessionRequest
+  SnapshotSessionResponse:
+    type: object
+    properties:
+      snapshot:
+        type: string
+    title: SnapshotSessionResponse
+  StartInterviewResponse:
+    type: object
+    properties:
+      goalState:
+        type: string
+      screen:
+        $ref: '#/definitions/InterviewScreen'
+      versionInfo:
+        $ref: '#/definitions/VersionInfoType'
+    title: StartInterviewResponse
+  SubmitData:
+    type: object
+    properties:
+      table:
+        type: array
+        items:
+          $ref: '#/definitions/SubmitTable'
+    title: SubmitData
+  SubmitInfo:
+    type: object
+    properties:
+      attachments:
+        $ref: '#/definitions/AttachmentList'
+      auditReports:
+        $ref: '#/definitions/AuditReportList'
+      rootTable:
+        type: string
+      tables:
+        $ref: '#/definitions/SubmitData'
+    title: SubmitInfo
+  SubmitRow:
+    type: object
+    properties:
+      action:
+        type: string
+        enum:
+          - CREATE
+          - UPDATE
+          - DELETE
+      attachments:
+        $ref: '#/definitions/AttachmentList'
+      id:
+        type: string
+      inputField:
+        type: array
+        items:
+          $ref: '#/definitions/DataField'
+      link:
+        type: array
+        items:
+          $ref: '#/definitions/DataLink'
+      outputField:
+        type: array
+        items:
+          $ref: '#/definitions/DataField'
+    title: SubmitRow
+  SubmitTable:
+    type: object
+    properties:
+      name:
+        type: string
+      row:
+        type: array
+        items:
+          $ref: '#/definitions/SubmitRow'
+    title: SubmitTable
+  Table:
+    type: object
+    properties:
+      field:
+        type: array
+        items:
+          $ref: '#/definitions/Field'
+      link:
+        type: array
+        items:
+          $ref: '#/definitions/Link'
+      name:
+        type: string
+    title: Table
+  TextChangePoint:
+    type: object
+    properties:
+      date:
+        type: string
+      textVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: TextChangePoint
+  TextControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      caption:
+        type: string
+      controlOrientation:
+        type: string
+        enum:
+          - HORIZONTAL
+          - VERTICAL
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      currentValue:
+        $ref: '#/definitions/TextControlValue'
+      customRenderURL:
+        type: string
+      defaultValue:
+        $ref: '#/definitions/TextControlValue'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      hintText:
+        type: string
+      id:
+        type: string
+      inputControlType:
+        type: string
+        enum:
+          - CHECKBOX
+          - RADIO_BUTTON
+          - DROP_DOWN
+          - LISTBOX
+          - SEARCHING_COMBO
+          - DMY_INPUTS
+          - CALENDAR
+          - TEXT_AREA
+          - TEXT
+          - MASKED
+          - PASSWORD
+          - HMS_INPUTS
+          - DMYHMS_INPUTS
+          - IMAGE_BUTTON
+          - TEXT_BUTTON_GROUP
+          - IMAGE_BUTTON_GROUP
+          - TEXT_IMAGE_BUTTON_GROUP
+          - SLIDER
+          - SWITCH
+          - CUSTOM
+      inputRegex:
+        type: string
+      listOptions:
+        $ref: '#/definitions/TextListOptions'
+      listOptionsFilter:
+        $ref: '#/definitions/TextListOptionsFilter'
+      mask:
+        type: string
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      sliderLeftCaption:
+        type: string
+      sliderRightCaption:
+        type: string
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: TextControl
+  TextControlValue:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/TextChangePoint'
+      textVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: TextControlValue
+  TextListOptionFilterValue:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      listOptions:
+        $ref: '#/definitions/TextListOptions'
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+    title: TextListOptionFilterValue
+  TextListOptions:
+    type: object
+    properties:
+      listOption:
+        type: array
+        items:
+          $ref: '#/definitions/TextOption'
+    title: TextListOptions
+  TextListOptionsFilter:
+    type: object
+    properties:
+      parentControlId:
+        type: string
+      parentControlValue:
+        type: array
+        items:
+          $ref: '#/definitions/TextListOptionFilterValue'
+    title: TextListOptionsFilter
+  TextOption:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/TextChangePoint'
+      checkedImage:
+        $ref: '#/definitions/BinaryData'
+      checkedImageUrl:
+        type: string
+      displayText:
+        type: string
+      textVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      uncheckedImage:
+        $ref: '#/definitions/BinaryData'
+      uncheckedImageUrl:
+        type: string
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: TextOption
+  TextValueExpression:
+    type: object
+    properties:
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      controlId:
+        type: string
+      entityId:
+        type: string
+      expressionOperator:
+        type: string
+        enum:
+          - EQUALS
+          - NOT_EQUALS
+          - IN
+          - NOT_IN
+      expressionType:
+        type: string
+        enum:
+          - IF
+          - UNLESS
+      instanceId:
+        type: string
+      values:
+        type: array
+        items:
+          anyOf:
+            - $ref: '#/definitions/UncertainValue2'
+            - $ref: '#/definitions/UnknownValue2'
+            - string
+    title: TextValueExpression
+  TimeChangePoint:
+    type: object
+    properties:
+      date:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: TimeChangePoint
+  TimeControlValue:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/TimeChangePoint'
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: TimeControlValue
+  TimeListOptionFilterValue:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      listOptions:
+        $ref: '#/definitions/TimeListOptions'
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+    title: TimeListOptionFilterValue
+  TimeListOptions:
+    type: object
+    properties:
+      listOption:
+        type: array
+        items:
+          $ref: '#/definitions/TimeOption'
+    title: TimeListOptions
+  TimeListOptionsFilter:
+    type: object
+    properties:
+      parentControlId:
+        type: string
+      parentControlValue:
+        type: array
+        items:
+          $ref: '#/definitions/TimeListOptionFilterValue'
+    title: TimeListOptionsFilter
+  TimeOfDayControl:
+    type: object
+    properties:
+      objectType:
+        type: string
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      caption:
+        type: string
+      controlOrientation:
+        type: string
+        enum:
+          - HORIZONTAL
+          - VERTICAL
+      controlState:
+        type: string
+        enum:
+          - HIDDEN
+          - READ_ONLY
+          - OPTIONAL
+          - MANDATORY
+          - VISIBLE
+      controlStateRule:
+        $ref: '#/definitions/ControlStateRule'
+      currentValue:
+        $ref: '#/definitions/TimeControlValue'
+      customRenderURL:
+        type: string
+      defaultValue:
+        $ref: '#/definitions/TimeControlValue'
+      errorList:
+        $ref: '#/definitions/TransactionErrorList'
+      hintText:
+        type: string
+      hourHintText:
+        type: string
+      id:
+        type: string
+      inputControlType:
+        type: string
+        enum:
+          - CHECKBOX
+          - RADIO_BUTTON
+          - DROP_DOWN
+          - LISTBOX
+          - SEARCHING_COMBO
+          - DMY_INPUTS
+          - CALENDAR
+          - TEXT_AREA
+          - TEXT
+          - MASKED
+          - PASSWORD
+          - HMS_INPUTS
+          - DMYHMS_INPUTS
+          - IMAGE_BUTTON
+          - TEXT_BUTTON_GROUP
+          - IMAGE_BUTTON_GROUP
+          - TEXT_IMAGE_BUTTON_GROUP
+          - SLIDER
+          - SWITCH
+          - CUSTOM
+      listOptions:
+        $ref: '#/definitions/TimeListOptions'
+      listOptionsFilter:
+        $ref: '#/definitions/TimeListOptionsFilter'
+      maxValue:
+        type: string
+      meridiemHintText:
+        type: string
+      minValue:
+        type: string
+      minuteHintText:
+        type: string
+      minuteIncrement:
+        type: integer
+      properties:
+        $ref: '#/definitions/PropertiesList'
+      secondHintText:
+        type: string
+      secondIncrement:
+        type: integer
+      sliderLeftCaption:
+        type: string
+      sliderRightCaption:
+        type: string
+      warningList:
+        $ref: '#/definitions/TransactionWarningList'
+      width:
+        type: integer
+    title: TimeOfDayControl
+  TimeOption:
+    type: object
+    properties:
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/TimeChangePoint'
+      checkedImage:
+        $ref: '#/definitions/BinaryData'
+      checkedImageUrl:
+        type: string
+      displayText:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue2'
+      uncheckedImage:
+        $ref: '#/definitions/BinaryData'
+      uncheckedImageUrl:
+        type: string
+      unknownVal:
+        $ref: '#/definitions/UnknownValue2'
+    title: TimeOption
+  TransactionErrorList:
+    type: object
+    properties:
+      error:
+        type: array
+        items:
+          $ref: '#/definitions/TransactionMessage'
+    title: TransactionErrorList
+  TransactionMessage:
+    type: object
+    properties:
+      code:
+        type: string
+      value:
+        type: string
+    title: TransactionMessage
+  TransactionWarningList:
+    type: object
+    properties:
+      warning:
+        type: array
+        items:
+          $ref: '#/definitions/TransactionMessage'
+    title: TransactionWarningList
+  UncertainValue:
+    type: object
+    title: UncertainValue
+  UncertainValue2:
+    type: object
+    title: UncertainValue2
+    properties:
+      objectType:
+        type: string
+  UnknownValue:
+    type: object
+    title: UnknownValue
+  UnknownValue2:
+    type: object
+    title: UnknownValue2
+    properties:
+      objectType:
+        type: string
+  UpdateData:
+    type: object
+    properties:
+      table:
+        type: array
+        items:
+          $ref: '#/definitions/UpdateTable'
+    title: UpdateData
+  UpdateTable:
+    type: object
+    title: UpdateTable
+  VersionInfoType:
+    type: object
+    properties:
+      buildTime:
+        type: string
+      deploymentVersion:
+        type: integer
+        format: int32
+      policyModelingVersion:
+        type: string
+      versionUid:
+        type: string
+    title: VersionInfoType

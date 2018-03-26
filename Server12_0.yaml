@@ -6,15 +6,15 @@ info:
     name: Start Point Industries
     url: https://www.startpointindustries.com
 host: proxy.startpointindustries.com
-basePath: /
+basePath: /server/12.0
 tags:
-  - name: Services
+  - name: Resources
     description: ' '
 paths:
-  /server/12.0/info:
+  '/info':
     get:
       tags:
-        - Services
+        - Resources
       summary: Get server information
       produces:
         - application/json
@@ -29,10 +29,10 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
-  /server/12.0/rulebases:
+  '/rulebases':
     get:
       tags:
-        - Services
+        - Resources
       summary: List rulebases
       produces:
         - application/json
