@@ -1,0 +1,504 @@
+swagger: '2.0'
+info:
+  version: '12.2.1'
+  title: Answer Service
+  contact:
+    name: Start Point Industries
+    url: https://www.startpointindustries.com
+host: proxy.startpointindustries.com
+basePath: /answer/12.2.1/{deployment}
+tags:
+  - name: Resources
+    description: ' '
+paths:
+  '/answer':
+    post:
+      tags:
+        - Resources
+      summary: Answer
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+        - in: body
+          name: answerRequest
+          description: answerRequest
+          required: true
+          schema:
+            $ref: '#/definitions/AnswerRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/AnswerResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/input-data-definition':
+    get:
+      tags:
+        - Resources
+      summary: List goals
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetInputDataDefinitionResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - controller
+      summary: List goals
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deployment
+          in: path
+          description: deployment
+          required: true
+          type: string
+        - in: body
+          name: requestBody
+          description: requestBody
+          required: true
+          schema:
+            $ref: '#/definitions/GetInputDataDefinitionRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetInputDataDefinitionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  AnswerRequest:
+    type: object
+    properties:
+      data:
+        $ref: '#/definitions/LoadData'
+      showVersion:
+        type: boolean
+    title: AnswerRequest
+  AnswerResponse:
+    type: object
+    properties:
+      auditReports:
+        $ref: '#/definitions/AuditReportList'
+      tables:
+        $ref: '#/definitions/SubmitData'
+      versionInfo:
+        $ref: '#/definitions/VersionInfoType'
+      warnings:
+        $ref: '#/definitions/TransactionWarningList'
+    title: AnswerResponse
+  Attachment:
+    type: object
+    properties:
+      description:
+        type: string
+      filename:
+        type: string
+      name:
+        type: string
+      value:
+        type: string
+    title: Attachment
+  AttachmentList:
+    type: object
+    properties:
+      attachment:
+        type: array
+        items:
+          $ref: '#/definitions/Attachment'
+    title: AttachmentList
+  AttributeAuditNode:
+    type: object
+    properties:
+      attributeId:
+        type: string
+      attributeType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      booleanVal:
+        type: boolean
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/ChangePoint'
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      endRelevance:
+        type: string
+      entityId:
+        type: string
+      instanceId:
+        type: string
+      isUserSet:
+        type: boolean
+      nodeId:
+        type: string
+      nodes:
+        type: array
+        items:
+          type: object
+      numberVal:
+        type: number
+      referenceTags:
+        $ref: '#/definitions/ReferenceTagList'
+      startRelevance:
+        type: string
+      text:
+        type: string
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue'
+    title: AttributeAuditNode
+  AuditReportList:
+    type: object
+    properties:
+      report:
+        type: array
+        items:
+          $ref: '#/definitions/AttributeAuditNode'
+    title: AuditReportList
+  ChangePoint:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      date:
+        type: string
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue'
+    title: ChangePoint
+  DataField:
+    type: object
+    properties:
+      booleanVal:
+        type: boolean
+      changePoint:
+        type: array
+        items:
+          $ref: '#/definitions/ChangePoint'
+      dateVal:
+        type: string
+      datetimeVal:
+        type: string
+      fieldType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      name:
+        type: string
+      numberVal:
+        type: number
+      textVal:
+        type: string
+      timeVal:
+        type: string
+      uncertainVal:
+        $ref: '#/definitions/UncertainValue'
+      unknownVal:
+        $ref: '#/definitions/UnknownValue'
+    title: DataField
+  DataLink:
+    type: object
+    properties:
+      name:
+        type: string
+      ref:
+        type: array
+        items:
+          $ref: '#/definitions/LinkRef'
+      target:
+        type: string
+    title: DataLink
+  DataTable:
+    type: object
+    title: DataTable
+  EntityAuditNode:
+    type: object
+    properties:
+      instanceId:
+        type: string
+      text:
+        type: string
+    title: EntityAuditNode
+  Field:
+    type: object
+    properties:
+      fieldType:
+        type: string
+        enum:
+          - BOOLEAN
+          - TEXT
+          - NUMBER
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - TIMEOFDAY
+      name:
+        type: string
+    title: Field
+  GetInputDataDefinitionRequest:
+    type: object
+    properties:
+      showVersion:
+        type: boolean
+    title: GetInputDataDefinitionRequest
+  GetInputDataDefinitionResponse:
+    type: object
+    properties:
+      data:
+        $ref: '#/definitions/SeedDataDescription'
+      versionInfo:
+        $ref: '#/definitions/VersionInfoType'
+    title: GetInputDataDefinitionResponse
+  Link:
+    type: object
+    properties:
+      name:
+        type: string
+      target:
+        type: string
+    title: Link
+  LinkRef:
+    type: object
+    properties:
+      id:
+        type: string
+    title: LinkRef
+  LoadData:
+    type: object
+    properties:
+      table:
+        type: array
+        items:
+          $ref: '#/definitions/DataTable'
+    title: LoadData
+  ReferenceAuditNode:
+    type: object
+    properties:
+      refNodeId:
+        type: string
+    title: ReferenceAuditNode
+  ReferenceTag:
+    type: object
+    properties:
+      value:
+        type: string
+    title: ReferenceTag
+  ReferenceTagList:
+    type: object
+    properties:
+      referenceTag:
+        type: array
+        items:
+          $ref: '#/definitions/ReferenceTag'
+    title: ReferenceTagList
+  RelationshipAuditNode:
+    type: object
+    properties:
+      endRelevance:
+        type: string
+      isUserSet:
+        type: boolean
+      nodeId:
+        type: string
+      nodes:
+        type: array
+        items:
+          type: object
+      referenceTags:
+        $ref: '#/definitions/ReferenceTagList'
+      relationshipId:
+        type: string
+      relationshipState:
+        type: string
+        enum:
+          - KNOWN
+          - UNKNOWN
+          - UNCERTAIN
+      relationshipType:
+        type: string
+        enum:
+          - ONE_TO_ONE
+          - ONE_TO_MANY
+          - MANY_TO_ONE
+          - MANY_TO_MANY
+      sourceEntityId:
+        type: string
+      sourceInstanceId:
+        type: string
+      startRelevance:
+        type: string
+      targetEntityId:
+        type: string
+      text:
+        type: string
+    title: RelationshipAuditNode
+  SeedDataDescription:
+    type: object
+    properties:
+      table:
+        type: array
+        items:
+          $ref: '#/definitions/Table'
+    title: SeedDataDescription
+  SubmitData:
+    type: object
+    properties:
+      table:
+        type: array
+        items:
+          $ref: '#/definitions/SubmitTable'
+    title: SubmitData
+  SubmitRow:
+    type: object
+    properties:
+      action:
+        type: string
+        enum:
+          - CREATE
+          - UPDATE
+          - DELETE
+      attachments:
+        $ref: '#/definitions/AttachmentList'
+      id:
+        type: string
+      inputField:
+        type: array
+        items:
+          $ref: '#/definitions/DataField'
+      link:
+        type: array
+        items:
+          $ref: '#/definitions/DataLink'
+      outputField:
+        type: array
+        items:
+          $ref: '#/definitions/DataField'
+    title: SubmitRow
+  SubmitTable:
+    type: object
+    properties:
+      name:
+        type: string
+      row:
+        type: array
+        items:
+          $ref: '#/definitions/SubmitRow'
+    title: SubmitTable
+  Table:
+    type: object
+    properties:
+      field:
+        type: array
+        items:
+          $ref: '#/definitions/Field'
+      link:
+        type: array
+        items:
+          $ref: '#/definitions/Link'
+      name:
+        type: string
+    title: Table
+  TransactionMessage:
+    type: object
+    properties:
+      code:
+        type: string
+      value:
+        type: string
+    title: TransactionMessage
+  TransactionWarningList:
+    type: object
+    properties:
+      warning:
+        type: array
+        items:
+          $ref: '#/definitions/TransactionMessage'
+    title: TransactionWarningList
+  UncertainValue:
+    type: object
+    title: UncertainValue
+  UnknownValue:
+    type: object
+    title: UnknownValue
+  VersionInfoType:
+    type: object
+    properties:
+      buildTime:
+        type: string
+      deploymentVersion:
+        type: integer
+        format: int32
+      policyModelingVersion:
+        type: string
+      versionUid:
+        type: string
+    title: VersionInfoType
