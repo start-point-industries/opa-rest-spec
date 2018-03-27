@@ -71,7 +71,7 @@ paths:
           description: Not Found
     post:
       tags:
-        - controller
+        - Resources
       summary: List goals
       consumes:
         - application/json
@@ -181,7 +181,10 @@ definitions:
       nodes:
         type: array
         items:
-          type: object
+          anyOf:
+            - $ref: '#/definitions/AttributeAuditNode'
+            - $ref: '#/definitions/RelationshipAuditNode'
+            - $ref: '#/definitions/ReferenceAuditNode'
       numberVal:
         type: number
       referenceTags:
@@ -372,7 +375,11 @@ definitions:
       nodes:
         type: array
         items:
-          type: object
+          anyOf:
+            - $ref: '#/definitions/EntityAuditNode'
+            - $ref: '#/definitions/AttributeAuditNode'
+            - $ref: '#/definitions/RelationshipAuditNode'
+            - $ref: '#/definitions/ReferenceAuditNode'
       referenceTags:
         $ref: '#/definitions/ReferenceTagList'
       relationshipId:
